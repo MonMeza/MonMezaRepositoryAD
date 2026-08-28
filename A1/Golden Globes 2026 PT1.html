@@ -1,0 +1,65 @@
+<!doctype html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>Página 2</title>
+   <style>
+    body {
+        background-color:rgb(17, 34, 80);
+        text-align: center;
+    }
+    h1{
+        color: rgb(245, 240, 233);
+        font-size: 65px;
+    }
+    h2 {
+        color:rgb(222, 160, 68);
+        font-family: "DM Serif Display", serif;
+        font-weight: 400;
+        font-style: italic;
+        font-size: 30px;
+    }
+    p {
+        color:rgb(245, 240, 233);
+        font-size: 40px;
+    }
+    </style>
+
+    <script>
+      function init(){
+            var nombreactor = document.getElementById("bestactor");
+            nombreactor.innerHTML = "Rami Malek";
+
+            var nombredrama = document.getElementById("bestdrama");
+            nombredrama.innerHTML = "Hamnet";
+
+            var nombrecomedy = document.getElementById("bestcomedy");
+            nombrecomedy.innerHTML = "One Battle After Another";
+
+            var nombreactress = document.getElementById("bestactress");
+            nombreactress.innerHTML = "Jessie Buckley";
+      }
+      window.onload = init;
+    </script>
+
+ </head>
+ <body>
+     <h1>Golden Globe Winners 2026</h1>
+ </br>
+     <h2>Best Motion Picture - Drama</h2>
+     <p id="bestdrama">Name Drama</p>
+ </br>
+     <h2>Best Motion Picture - Musical or Comedy</h2>
+     <p id="bestcomedy">Name Comedy</p>
+ </br>
+     <h2>Best Performance by an Actress in a Motion Picture - Drama</h2>
+     <p id="bestactress">Name Actress</p>
+ </br>
+     <h2>Best Performance by an Actor in a Motion Picture - Drama</h2>
+     <p id="bestactor">Name Actor</p>
+ </body>
+</html>
+
