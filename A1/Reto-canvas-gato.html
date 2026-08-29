@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+ <head>
+   <meta charset="utf-8">
+   <title>Pagina imagen animada</title>
+   <style>
+    body{
+        text-align: center;
+        background-color: #101327;
+    }
+    canvas{
+           border: 5px solid #2a3678;
+           background-color: rgb(230, 167, 192);
+    }
+    </style>
+    <script>
+        var x=Math.random() * 650;
+        var y=Math.random() * 600;
+        var dx=2;
+        var dy=2;
+        var imagen= new Image();
+        imagen.src = "Puedo renunciar.jpg"; 
+
+        function animate(){    
+            requestAnimationFrame(animate);
+            var canvas = document.getElementById("micanvas");
+            var context = canvas.getContext("2d");
+            context.clearRect(0, 0, innerWidth, innerHeight);
+            context.drawImage(imagen, x, y, 140, 140); 
+           // Rebote horizontal
+            if (x + 130 >= canvas.width || x <= 0){
+                 dx = -dx;
+                 
+}
+
+            // Rebote vertical
+        if (y + 130 >= canvas.height || y <= 0){
+       dy = -dy;
+}
+
+// Movimiento
+x += dx;
+y += dy;
+        }
+        animate();
+    </script>
+</head>
+<body>
+    <canvas id="micanvas" width="800" height="600"></canvas>
+</body>
+</html>
