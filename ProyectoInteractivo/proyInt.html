@@ -1,0 +1,120 @@
+<!doctype html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Leckerli+One&display=swap" rel="stylesheet">
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>proyInt</title>
+    <style>
+      body { 
+        background-color:rgb(226, 115, 150);
+        text-align: center;
+      }
+      h1{
+        color: rgb(179, 222, 226);
+        font-family: "Leckerli One", cursive;
+        font-size: 60px;
+        font-weight: 400;
+        font-style: normal;
+      }
+      canvas {
+        background-color:rgb(255, 216, 240);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Moods de ser Emprendedora</h1>
+    <canvas id="canvas" width="1000" height="800"></canvas>
+    <aside>Press A to F</aside>
+
+<style>
+  body {
+    color: rgb(179, 222, 226);
+    font-family: "DM Serif Display", serif;
+    font-size: 30px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+</style>
+    
+    <script src="keycodes.js"></script>
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById("canvas");
+      var context = canvas.getContext("2d");
+      var x = 200;
+      var y = 200;
+      context.font = '35pt Times New Roman';
+      context.fillStyle = 'black';
+      context.fillText('Viendo todos los pedidos en lunes', x-20, y-50); //<== para poner texto en el canvas
+
+      var imagen= new Image(); // variable para guardar la imagen
+      imagen.src = "lunes.jpg"; // fuente de donde toma la imagen
+      var imagen2= new Image(); // variable para guardar la imagen
+      imagen2.src = "nohaydinero.jpg"; // fuente de donde toma la imagen
+      var imagen3= new Image(); // variable para guardar la imagen
+      imagen3.src = "tripee.jpg"; // fuente de donde toma la imagen
+      var imagen4= new Image(); // variable para guardar la imagen
+      imagen4.src = "dialibre.jpg"; // fuente de donde toma la imagen
+      var imagen5= new Image(); // variable para guardar la imagen
+      imagen5.src = "wewencha.jpg"; // fuente de donde toma la imagen
+      var imagen6= new Image(); // variable para guardar la imagen
+      imagen6.src = "pedidos.jpg"; // fuente de donde toma la imagen
+      imagen.onload = function(){
+        context.drawImage(imagen,  x+50, y+5, 500, 500); //<== para poner imagen en el canvas
+      };
+
+    
+
+      function onKeyboardEvent (event) {
+        switch (event.keyCode) {
+        case keycode.A:
+          console.log("Letra A!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.fillText('Viendo todos los pedidos en lunes', x-20, y-50);
+          context.drawImage(imagen, x+50, y+5, 500, 500);
+          break;
+        case keycode.B:
+          console.log("Letra B!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+           context.fillText('Buscando nueva plotter', x+80, y-50);
+          context.drawImage(imagen2, x-10, y+30, imagen2.width*0.9, imagen2.height*0.9);
+          break;
+        case keycode.C:
+          console.log("Letra C!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+          context.fillText('Yo después de terminar todos los pedidos', x-85, y-50);
+          context.drawImage(imagen3, x+5, y+5, imagen3.width*2.2, imagen3.height*2.2);
+          break;
+           case keycode.D:
+          console.log("Letra D!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+           context.fillText('Yo en domingo', x+175, y-50);
+          context.drawImage(imagen4, x+5, y+5, imagen3.width*2.2, imagen3.height*2.4);
+          break;
+          case keycode.E:
+          console.log("Letra E!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+           context.fillText('Cuando me piden contestar mensajes', x-35, y-50);
+          context.drawImage(imagen5, x-15, y+5, imagen3.width*2.3, imagen3.height*2);
+          break;
+          case keycode.F:
+          console.log("Letra F!");
+          context.clearRect(0, 0, innerWidth, innerHeight);
+           context.fillText('Viendo todos los pedidos pendientes', x-20, y-50);
+          context.drawImage(imagen6, x+80, y+5, imagen6.width*0.6, imagen6.height*0.6);
+          break;
+
+
+        default:
+          console.log(event.keyCode);
+        }
+      }
+
+      window.addEventListener('keydown', onKeyboardEvent, false);
+    };
+    </script>
+  </body>
+</html>
