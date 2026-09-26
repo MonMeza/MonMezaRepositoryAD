@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ACT Onda Sinoidal</title>
+    <style>
+      body { 
+       
+        text-align: center;
+        background-color: rgb(233, 117, 59);
+      }
+
+      canvas{
+           background-color: rgb(69, 49, 48);
+       }
+    </style>
+  </head>  
+  <body>
+    <canvas id="canvas" width="1000" height="700"></canvas>
+    
+    <script src="utils.js"></script>
+    
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+        
+          pelota = new Image(),
+          angle2=60,
+          centerScale = 1,
+          range = .5,
+          escalaX = 1,
+          escalaY = 1,
+          speed2 = 0.03,
+          posicionX = 0,
+          posicionY = 20,
+          centerY = 200,
+          rangeY = 50,
+          speedX = 2,
+          speedY = 3;
+          pelota.src  = "PumpkinBear.png";
+        
+      //ball.x = canvas.width / 2;
+      //ball.y = canvas.height / 2;
+        
+      (function drawFrame () {
+        window.requestAnimationFrame(drawFrame, canvas);
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        context.save();
+        context.translate(0, 200);
+        posicionY = centerY / 2 + Math.sin(angle2) * rangeY;
+        angle2 += speed2;
+        posicionX += speedX;
+        posicionY += speedY;
+        context.drawImage(pelota, posicionX, posicionY, pelota.width*0.75, pelota.height*0.75);
+        context.restore();
+
+          if (posicionX + pelota.width * 0.75 > canvas.width) {
+          posicionX = canvas.width - pelota.width * 0.75; // lo coloca justo en el borde
+          speedX = -speedX;
+           }
+          if (posicionX < 0) {
+          posicionX = 0;
+          speedX = -speedX;
+           }
+          posicionX += speedX;
+
+  // Rebote en Y con corrección
+          if (posicionY + pelota.height * 0.75 > canvas.height) {
+          posicionY = canvas.height - pelota.height * 0.75;
+          speedY = -speedY;
+           }
+          if (posicionY < 0) {
+          posicionY = 0;
+          speedY = -speedY;
+           }
+          posicionY += speedY;
+
+      }());
+    };
+    </script>
+  </body>
+</html>
