@@ -1,0 +1,165 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>casita</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <style>
+      body {
+        background-color: #ffbdd9;
+      }
+    </style>
+    <canvas id="canvas" width="800" height="600"></canvas>
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d');
+
+      // --- Fondo degradado azul ---
+      var skyGradient = context.createLinearGradient(0, 0, 0, canvas.height);
+      skyGradient.addColorStop(0, "#FFE8F1");
+      skyGradient.addColorStop(0.4, "#FFADCC");
+      skyGradient.addColorStop(1, "#CC277E");
+      context.fillStyle = skyGradient;
+      context.fillRect(0, 0, canvas.width, canvas.height);
+
+      // --- Casa con gradiente ---//
+      var houseGradient = context.createLinearGradient(0, 300, 0, 400);
+      houseGradient.addColorStop(0, "#F1E8FF");
+      houseGradient.addColorStop(0.5, "#D0B6FA");
+      houseGradient.addColorStop(1, "#7D52BF");
+      context.fillStyle = houseGradient;
+      context.strokeStyle = "#7D52BF";
+      context.lineWidth = 2;
+      context.fillRect(240, 300, 200, 100);
+      context.strokeRect(240, 300, 200, 100);
+
+      // --- Casa 2 con gradiente ---//
+      var house2Gradient = context.createLinearGradient(399, 270, 399, 440);
+      house2Gradient.addColorStop(0, "#F1E8FF");
+      house2Gradient.addColorStop(0.5, "#D0B6FA");
+      house2Gradient.addColorStop(1, "#7D52BF");
+      context.fillStyle = house2Gradient;
+      context.strokeStyle = "#7D52BF";
+      context.lineWidth = 2;
+      context.fillRect(399, 270, 150, 170);
+      context.strokeRect(399, 270, 150, 170);
+      
+      // --- Tejado con gradiente ---//
+      var roofGradient = context.createLinearGradient(240, 300, 200, 300);
+      roofGradient.addColorStop(0, "#F1E8FF");
+      roofGradient.addColorStop(0.5, "#D0B6FA");
+      roofGradient.addColorStop(1, "#7D52BF");
+      context.fillStyle = roofGradient;
+      context.strokeStyle = "#7D52BF";
+      context.lineWidth = 2;
+      context.beginPath();
+      context.moveTo(240, 300);
+      context.lineTo(395, 300);
+      context.lineTo(340, 250);
+      context.closePath();
+      context.fill();
+      context.stroke();
+
+      // --- Tejado de casa 2 con gradiente ---//
+      var roof2Gradient = context.createLinearGradient(399, 270, 399, 440);
+      roof2Gradient.addColorStop(0, "#F1E8FF");
+      roof2Gradient.addColorStop(0.5, "#D0B6FA");
+      roof2Gradient.addColorStop(1, "#7D52BF");
+      context.fillStyle = roof2Gradient;
+      context.strokeStyle = "#7D52BF";
+      context.lineWidth = 2;
+      context.beginPath();
+      context.moveTo(399, 270);
+      context.lineTo(549, 270);
+      context.lineTo(474, 220);
+      context.closePath();
+      context.fill();
+      context.stroke();
+
+      // --- Media luna con degradado dorado ---
+      var moonGradient = context.createRadialGradient(600, 100, 10, 600, 100, 50);
+      moonGradient.addColorStop(0, "#FFFCF0");
+      moonGradient.addColorStop(0.7, "#FFE169");
+      moonGradient.addColorStop(1, "#DEAA00");
+
+      context.fillStyle = moonGradient;
+      context.strokeStyle = "#DEAA00";
+      context.lineWidth = 2;
+      context.beginPath();
+      context.arc(600, 100, 50, 0, Math.PI * 2, true);
+      context.fill();
+      context.stroke();
+
+      // círculo encima para simular media luna
+      context.fillStyle = skyGradient;
+      context.beginPath();
+      context.arc(620, 100, 50, 0, Math.PI * 2, true);
+      context.fill();
+
+      // --- Hongo ---
+      context.fillStyle = "#FFF7EB";
+      context.strokeStyle = "#F2E0C4";
+      context.lineWidth = 2;
+      context.fillRect(510, 350, 25, 50);
+      context.strokeRect(510, 350, 25, 50);
+
+      context.fillStyle = "red";
+      context.strokeStyle = "darkred";
+      context.beginPath();
+      context.arc(522, 365, 40, Math.PI, 0, false);
+      context.closePath();
+      context.fill();
+      context.stroke();
+      // círculos blancos eliminados
+
+      // --- Árbol ---//
+      context.fillStyle = "#8B4513";
+      context.strokeStyle = "#5D2906";
+      context.lineWidth = 2;
+      context.fillRect(100, 300, 30, 100);
+      context.strokeRect(100, 300, 30, 100);
+
+      context.fillStyle = "#4CAF50";
+      context.strokeStyle = "#388E3C";
+      context.beginPath();
+      context.arc(110, 250, 70, 0, Math.PI * 2, true);
+      context.arc(70, 300, 50, 0, Math.PI * 2, true);
+      context.arc(150, 300, 50, 0, Math.PI *2, true);
+      context.arc(110, 302, 40, 0, Math.PI *2, true);
+      context.closePath();
+      context.fill();
+
+
+      // --- Estrella ---
+      context.fillStyle = "#FFE442";
+      context.strokeStyle = "#FFA500";
+      context.lineWidth = 2;
+      context.beginPath();
+      context.moveTo(500, 100);
+      context.lineTo(508, 120);
+      context.lineTo(530, 122);
+      context.lineTo(513, 136);
+      context.lineTo(518, 158);
+      context.lineTo(500, 146);
+      context.lineTo(482, 158);
+      context.lineTo(487, 136);
+      context.lineTo(470, 122);
+      context.lineTo(492, 120);
+      context.closePath();
+      context.fill();
+      context.stroke();
+
+      // --- Césped ---
+      context.fillStyle = "#4CAF50";
+      context.strokeStyle = "#388E3C";
+      context.lineWidth = 2;
+      context.fillRect(0, 400, 800, 200);
+      context.strokeRect(0, 400, 800, 200);
+
+    };
+    </script>
+  </body>
+</html>
