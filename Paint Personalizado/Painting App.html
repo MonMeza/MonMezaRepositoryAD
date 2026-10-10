@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poetsen+One&family=Raleway:ital,wght@1,500&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="utf-8">
+    <title>Mi Paint</title>
+    <style>
+      body {
+        background-color: rgb(255, 225, 237);
+        text-align: center;
+      }
+      canvas {
+        border: 5px solid rgb(0, 0, 0);
+        background-color: white;
+        margin-top: 20px;
+        border-radius: 80px;
+      }
+      .colores{
+        width: 100%;
+        height: 50px;
+        text-align: center;
+      }
+      aside{
+        font-size: 25px;
+        font-family: "Raleway", sans-serif;
+        font-style: italic;
+        font-weight: 500;
+        color: #000000;
+      }
+      .colores button{
+        width: 50px;
+        height: 50px;
+        border-radius: 100px;
+        margin-right: 5px;
+        margin-top: 15px;
+        border: 1px solid rgb(0, 0, 0);
+        cursor: pointer;
+      }
+      #black{
+        background: black;
+      }
+      #pastelPink{
+        background: rgb(255, 177, 215);
+      }
+      #lilac{
+        background: rgb(241, 173, 255);
+      }
+      #lavender{
+        background: rgb(195, 190, 255);
+      }
+      #babyBlue{
+        background: rgb(190, 207, 255);
+      }
+      #mintGreen{
+        background: rgb(190, 253, 255);
+      }
+      #softGreen{
+        background: rgb(190, 255, 212);
+      }
+      #creamYellow{
+        background: rgb(255, 250, 190);
+      }
+      #burgundy{
+        background: rgb(104, 29, 44);
+      }
+      #white{
+        background: rgb(255, 255, 255);
+      }
+      .colores button:hover{
+        opacity: 0.5;
+      }
+       #otros{
+        width: 100%;
+        height: 60px;
+      }
+      #otros button{
+        width: 200px;
+        height: 50px;
+        border-radius: 75px;
+        background: #9b1352;
+        border: 3px solid #5e022d;
+        color: white;
+        font-family: "Raleway", sans-serif;
+        font-size: 30px;
+        font-weight: 500;
+        font-style: italic;
+        cursor: pointer;
+        margin-top: 20px;
+      }
+      #otros button:hover{
+        opacity: 0.5;
+      }
+      label {
+      margin-top: 32px;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+      text-transform: underline;
+      color: #f472b6;
+      }
+      input[type=range] {
+      margin-top: 32px;
+      cursor: pointer;
+      accent-color: #ec4899;
+      }
+      #grosorVal {
+      margin-top: 32px;
+      font-weight: bold;
+      color: #f472b6;
+      min-width: 45px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="colores">
+      <button id="black" type="button" value="#000000"></button>
+      <button id="pastelPink" type="button" value="#ff98cd"></button>
+      <button id="lilac" type="button" value="#f5c4ff"></button>
+      <button id="lavender" type="button" value="#c3baff"></button>
+      <button id="babyBlue" type="button" value="#becfff"></button>
+      <button id="mintGreen" type="button" value="#befdff"></button>
+      <button id="softGreen" type="button" value="#bafdcc"></button>
+      <button id="creamYellow" type="button" value="#ffffbe"></button>
+      <button id="burgundy" type="button" value="#681d2c"></button>
+      <button id="white" type="button" value="#ffffff"></button>
+      <!--AGREGAR MÁS COLORES AQUÍ -->
+    </div>
+    <div id="otros">
+      <button id="clearCanvas" type="button">Clear</button>
+    </div>
+
+    <div id="grosor" class="grosor">
+    <label for="grosorSlider">Grosor:</label>
+    <input type="range" id="grosorSlider" min="1" max="50" value="50" step="1">
+    <span id="grosorVal">50x</span>
+    </div>
+
+    <canvas id="canvas" width="1200" height="600"></canvas>
+    <aside>Click and draw with the mouse.</aside>
+    
+    <script src="utils.js"></script>
+    <script>
+    window.onload = function () {
+      var canvas = document.getElementById('canvas'),
+          context = canvas.getContext('2d'),
+          mouse = utils.captureMouse(canvas);
+
+      canvas.addEventListener('mousedown', function () {
+        context.beginPath();
+        context.moveTo(mouse.x, mouse.y);
+        canvas.addEventListener('mousemove', onMouseMove, false);
+    }, false);
+
+      canvas.addEventListener('mouseup', function () {
+        canvas.removeEventListener('mousemove', onMouseMove, false);
+      }, false);
+
+      function onMouseMove () {
+        context.lineTo(mouse.x, mouse.y);
+        context.stroke();
+      }
+
+      // Handle Colors
+      var colores = document.getElementsByClassName('colores')[0];
+
+      colores.addEventListener('click', function(event) {
+          context.strokeStyle = event.target.value;
+          });
+          
+      // Handle Clear Button
+      var clearButton = document.getElementById('clearCanvas');
+
+      clearButton.addEventListener('click', function() {
+         context.clearRect(0, 0, canvas.width, canvas.height);
+        });
+
+      // Handle Grosor
+      var grosor = document.getElementsByClassName('grosor')[0];  
+
+      grosor.addEventListener('click', function(event) {
+          context.lineWidth = event.target.value;
+      });
+    };
+    </script>
+  </body>
+</html>
