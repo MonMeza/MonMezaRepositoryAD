@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Raleway:ital,wght@1,500&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="utf-8">
+    <title>Rotational Velocity</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      body{
+        background-color: #ffbdd9;
+        text-align: center;
+        align-items: center;
+        margin-top: 40px;
+      }
+        canvas { 
+            background-image: url("relojito.png");
+            background-repeat: no-repeat;
+            align-items: center;
+            text-align: center;
+            background-size: 580px 520px;
+            background-position: center;
+        }
+        h1{
+          font-family: "Pacifico", cursive;
+          font-style: regular;
+          font-weight: 400;
+          color: #6e0e3b;
+          font-size: 65px;
+        }
+    </style>
+  </head>
+  <body>
+    <h1>Check the pink hour, girl!</h1>
+    <canvas id="canvas" width="600" height="600"></canvas>
+
+    <script src="utils.js"></script>
+    <script src="./classes/arrow.js"></script>
+    <script>
+   window.onload = function () {
+  var canvas = document.getElementById('canvas'),
+      context = canvas.getContext('2d');
+
+  // Imágenes
+  var hora = new Image();
+  hora.src = "Horas.png";
+  var minuto = new Image();
+  minuto.src = "Minutos.png";
+  var segundo = new Image();
+  segundo.src = "Segundos.png";
+
+  // Ángulos iniciales
+  var radHora = 0, radMinuto = 0, radSegundo = 0;
+
+      var vrHora = Math.PI / 5;        // rad/seg
+      var vrMinuto = vrHora * 12;      // rad/seg
+      var vrSegundo = vrHora * 720;    // rad/seg
+
+      var fps = 60;
+
+  var ancho = 410, alto = 410;
+
+  (function drawFrame () {
+    requestAnimationFrame(drawFrame);
+    context.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Manecilla de horas
+    context.save();
+    context.translate(300, 300);
+    radHora += vrHora / fps;
+    context.rotate(radHora);
+    context.drawImage(hora, -ancho/2, -alto/2, ancho, alto);
+    context.restore();
+
+    // Manecilla de minutos
+    context.save();
+    context.translate(300, 300);
+    radMinuto += vrMinuto / fps;
+    context.rotate(radMinuto);
+    context.drawImage(minuto, -ancho/2, -alto/2, ancho, alto);
+    context.restore();
+
+    // Manecilla de segundos
+    context.save();
+    context.translate(300, 300);
+    radSegundo += vrSegundo / fps;
+    context.rotate(radSegundo);
+    context.drawImage(segundo, -ancho/2, -alto/2, ancho, alto);
+    context.restore();
+
+  }());
+    };
+    </script>
+  </body>
+</html>
